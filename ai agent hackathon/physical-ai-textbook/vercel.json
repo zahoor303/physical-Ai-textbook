@@ -1,0 +1,17 @@
+{
+    "rewrites": [
+        { "source": "/api/(.*)", "destination": "/rag_backend/api/$1" }
+    ],
+    "builds": [
+        {
+        "src": "rag_backend/api/index.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb" }
+        },
+        {
+        "src": "package.json",
+        "use": "@vercel/static-build",
+        "config": { "distDir": "build" }
+        }
+    ]
+}
